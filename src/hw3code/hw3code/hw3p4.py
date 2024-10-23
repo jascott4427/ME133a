@@ -39,8 +39,8 @@ class Trajectory():
         theta_pan  = (pi / 3) * sin(2* t)
         omega_pan  = ((2*pi)/3)*cos(2*t)
 
-        theta_tilt = (pi/3)*sin(t)-(pi/9)cos(6*t)
-        omega_tilt = (pi/3)*cos(t)+(6*pi/9)sin(6*t)
+        theta_tilt = (pi/3)*sin(t)-(pi/9)*cos(6*t)
+        omega_tilt = (pi/3)*cos(t)+(6*pi/9)*sin(6*t)
 
         # Return the position and velocity as python lists.
         return ([theta_pan, theta_tilt], [omega_pan, omega_tilt])
