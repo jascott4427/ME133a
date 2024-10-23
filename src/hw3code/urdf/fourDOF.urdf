@@ -13,71 +13,92 @@
        reorientation, i.e. the transform.  For moving joints, this
        happens before the continuous joint rotates around 'axis'. -->
 
+  <!-- Set Origin -->
   <link name="world">
   </link>
 
-  <!-- Shift 0 -->
+  <!-- Shift origin to joint 1 -->
   <joint name="shift0" type="fixed">
     <parent link="world"/>
-    <child  link="frame0prime"/>
+    <child  link="frame1"/>
     <origin xyz="0 0 0.2" rpy="0 0 0"/>
   </joint>
 
-  <link name="frame0prime">
+  <!-- Define Joint 1 -->
+  <link name="frame1">
   </link>
   
-  <!-- Joint 1 -->
+  <!-- Rotation of Joint 1 -->
   <joint name="theta1" type="continuous">
-    <parent link="frame0prime"/>
-    <child  link="frame1"/>
+    <parent link="frame1"/>
+    <child  link="frame1prime"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
     <axis   xyz="0 0 1"/>
   </joint>
 
-  <link name="frame1">
+  <link name="frame1prime">
+  </link>
+
+  <joint name="shift1prime" type="fixed">
+    <parent link="frame1prime"/>
+    <child  link="frame2"/>
+    <origin xyz="0 0.2 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Define Joint 2 -->
+  <link name="frame2">
   </link>
 
   <!-- Shift 1 and Joint 2 in one step... -->
   <joint name="theta2" type="continuous">
-    <parent link="frame1"/>
-    <child  link="frame2"/>
-    <origin xyz="0.2 0 0.2" rpy="0 0 0"/>
-    <axis   xyz="1 0 0"/>
+    <parent link="frame2"/>
+    <child  link="frame2prime"/>
+    <origin xyz="0 0.2 0" rpy="0 0 0"/>
+    <axis   xyz="0 1 0"/>
   </joint>
 
-  <link name="frame2">
+  <link name="frame2prime">
+  </link>
+
+  <joint name="shift2prime" type="fixed">
+    <parent link="frame2prime"/>
+    <child  link="frame3"/>
+    <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+  </joint>
+
+  <link name="frame3">
   </link>
 
   <!-- Shift 2 and Joint 3 in one step... -->
   <joint name="theta3" type="continuous">
-    <parent link="frame2"/>
-    <child  link="frame3"/>
-    <origin xyz="0.2 -0.2 0" rpy="0 0 0"/>
+    <parent link="frame3"/>
+    <child  link="frame3prime"/>
+    <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+    <axis   xyz="0 0 -1"/>
+  </joint>
+  
+  <link name="frame3prime">
+  </link>
+
+  <joint name="shift3prime" type="fixed">
+    <parent link="frame3prime"/>
+    <child  link="frame4"/>
+    <origin xyz="0 0.2 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="frame4">
+  </link>
+
+  <!-- Shift 3 and Joint 4 in one step... -->
+  <joint name="theta4" type="continuous">
+    <parent link="frame4"/>
+    <child  link="frameTip"/>
+    <origin xyz="0 0.2 0" rpy="0 0 0"/>
     <axis   xyz="0 1 0"/>
   </joint>
   
-  <link name="frame3">
+  <link name="frameTip">
   </link>
-  
-  <!-- Shift 3 and Joint 4 in one step... -->
-  <joint name="theta4" type="continuous">
-    <parent link="frame3"/>
-    <child  link="frame4"/>
-    <origin xyz="0 0.2 -0.2" rpy="0 0 0"/>
-    <axis   xyz="0 0 1"/>
-  </joint>
-  
-  <link name="frame4">
-  </link>
-  
-  <joint name="shift4" type="fixed">
-    <parent link="frame4"/>
-    <child  link="tip"/>
-    <origin xyz="0 0 -0.2" rpy="0 0 0"/>
-  </joint>
-
-  <link name="tip">
-  </link>
-
 
   <!-- *************************************************** -->
   <!-- ****************** Named Colors ******************* -->
