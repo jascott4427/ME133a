@@ -1,127 +1,102 @@
 <?xml version="1.0"?>
 
-<robot name="TestRobot">
+<robot name="FourDOFRobot">
   
-  <!-- *************************************************** -->
-  <!-- ***************** Kinematic Chain ***************** -->
-  <!-- *************************************************** -->
-  <!-- <link name="..."> is really a frame!                -->
-  <!-- <joint name="..." type="fixed">      is a fixed shift.    -->
-  <!-- <joint name="..." type="continuous"> is a revolute joint. -->
-  <!-- <joint name="..." type="prismatic">  is a linear   joint. -->
-  <!-- Note the 'origin' tag in the joints defines the shift and
-       reorientation, i.e. the transform.  For moving joints, this
-       happens before the continuous joint rotates around 'axis'. -->
-
-  <link name="world">
+  <!-- Base link -->
+  <link name="base_link">
   </link>
 
-  <!-- Fixed shift: translation and rotation -->
-  <joint name="joint0prime" type="fixed">
-    <parent link="world"/>
-    <child  link="frame0prime"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>		<!-- No actual shift -->
-  </joint>
-
-  <link name="frame0prime">			<!-- No visuals -->
-  </link>
-
-  <!-- Pure rotation -->
-  <joint name="theta1" type="continuous">
-    <parent link="frame0prime"/>
-    <child  link="frame1"/>
-    <axis   xyz="0 0 1"/>
-  </joint>
-
-  <link name="frame1">				<!-- Frame with cylinder -->
-    <visual>
-      <origin xyz="0 0 0.2" rpy="0 0 0"/>	<!-- Center of cylinder -->
-      <geometry>
-	<cylinder length="0.2" radius="0.05"/>	<!-- Size of cylinder -->
-      </geometry>
-      <material name="gray"/>			<!-- Color -->
-    </visual>
-  </link>
-
-  <!-- Combined shift and then moving (here prismatic) -->
-  <joint name="theta2" type="prismatic">
-    <parent link="frame1"/>
-    <child  link="frame2"/>
+  <!-- First joint (theta1) -->
+  <joint name="joint1" type="continuous">
+    <parent link="base_link"/>
+    <child  link="link1"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <axis   xyz="0 0 1"/>
-    <limit  lower="0.5" upper="1" velocity="1" effort="999"/>
   </joint>
 
-  <link name="frame2">				<!-- Frame with box -->
+  <link name="link1">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>		<!-- Center of box -->
+      <origin xyz="0 0 L/2" rpy="0 0 0"/>
       <geometry>
-	<box size="0.2 0.2 0.2" />		<!-- Size of box -->
+        <cylinder length="L" radius="0.05"/>
       </geometry>
-      <material name="red"/>			<!-- Color -->
+      <material name="gray"/>
     </visual>
   </link>
 
-  <!-- Fixed shift to tip -->
-  <joint name="joint2prime" type="fixed">
-    <parent link="frame2"/>
-    <child  link="tip"/>
-    <origin xyz="0.5 0 0" rpy="0 0 0"/>
+  <!-- Second joint (theta2) -->
+  <joint name="joint2" type="continuous">
+    <parent link="link1"/>
+    <child  link="link2"/>
+    <origin xyz="0 0 L" rpy="0 0 0"/>
+    <axis   xyz="0 1 0"/>
   </joint>
 
-  <link name="tip">				<!-- Frame with rod -->
+  <link name="link2">
     <visual>
-      <origin xyz="-0.25 0 0" rpy="0 1.5708 0"/>	<!-- Center -->
+      <origin xyz="0 0 L/2" rpy="0 0 0"/>
       <geometry>
-	<cylinder length="0.5" radius="0.02"/>		<!-- Size -->
+        <cylinder length="L" radius="0.05"/>
       </geometry>
-      <material name="orange"/>				<!-- Color -->
+      <material name="gray"/>
     </visual>
   </link>
 
-  <!-- Sphere attached below... -->
-
-
-  <!-- *************************************************** -->
-  <!-- ****************** Named Colors ******************* -->
-  <!-- *************************************************** -->
-
-  <material name="white">    <color rgba="1.00 1.00 1.00 1"/>  </material>
-  <material name="gray">     <color rgba="0.60 0.60 0.60 1"/>  </material>
-  <material name="table">    <color rgba="0.85 0.77 0.77 1"/>  </material>
-  <material name="black">    <color rgba="0.00 0.00 0.00 1"/>  </material>
-
-  <material name="red">      <color rgba="1.00 0.00 0.00 1"/>  </material>
-  <material name="green">    <color rgba="0.00 1.00 0.00 1"/>  </material>
-  <material name="blue">     <color rgba="0.00 0.00 1.00 1"/>  </material>
-
-  <material name="cyan">     <color rgba="0.00 1.00 1.00 1"/>  </material>
-  <material name="magenta">  <color rgba="1.00 0.00 1.00 1"/>  </material>
-  <material name="yellow">   <color rgba="1.00 1.00 0.00 1"/>  </material>
-
-  <material name="orange">   <color rgba="1.00 0.65 0.00 1"/>  </material>
-
-
-  <!-- *************************************************** -->
-  <!-- *********** Additional Visual Elements ************ -->
-  <!-- *************************************************** -->
-
-  <!-- THESE ARE EXAMPLES... PLAY AS YOU LIKE -->
-
-  <!-- *** Attach a sphere to the tip *** -->
-
-  <joint name="attach-sphere" type="fixed">
-    <parent link="tip"/>
-    <child  link="sphere"/>
+  <!-- Third joint (theta3) -->
+  <joint name="joint3" type="continuous">
+    <parent link="link2"/>
+    <child  link="link3"/>
+    <origin xyz="0 0 L" rpy="0 0 0"/>
+    <axis   xyz="0 0 1"/>
   </joint>
-  <link name="sphere">				<!-- Frame with sphere -->
+
+  <link name="link3">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>		<!-- Center of sphere -->
+      <origin xyz="0 0 L/2" rpy="0 0 0"/>
       <geometry>
-	<sphere radius="0.2" />			<!-- Size of sphere -->
+        <cylinder length="L" radius="0.05"/>
       </geometry>
-      <material name="green"/>			<!-- Color -->
+      <material name="gray"/>
     </visual>
   </link>
+
+  <!-- Fourth joint (theta4) -->
+  <joint name="joint4" type="continuous">
+    <parent link="link3"/>
+    <child  link="link4"/>
+    <origin xyz="0 0 L" rpy="0 0 0"/>
+    <axis   xyz="0 1 0"/>
+  </joint>
+
+  <link name="link4">
+    <visual>
+      <origin xyz="0 0 L/2" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="L" radius="0.05"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+  </link>
+
+  <!-- End effector (tool) -->
+  <joint name="end_effector_joint" type="fixed">
+    <parent link="link4"/>
+    <child  link="end_effector"/>
+    <origin xyz="L 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="end_effector">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+  </link>
+
+  <!-- Colors -->
+  <material name="gray">    <color rgba="0.6 0.6 0.6 1"/>  </material>
+  <material name="yellow">  <color rgba="1.0 1.0 0.0 1"/>  </material>
 
 </robot>
