@@ -1,0 +1,34 @@
+[0.447s] Invoking command in '/home/trey/robotws/build/hw3code': PYTHONPATH=/home/trey/robotws/build/hw3code/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/trey/robotws/install/hw3code/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/trey/robotws/build/hw3code/build --no-deps symlink_data
+[0.575s] running develop
+[0.576s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[0.576s]   warnings.warn(
+[0.659s] running egg_info
+[0.659s] creating hw3code.egg-info
+[0.660s] writing hw3code.egg-info/PKG-INFO
+[0.660s] writing dependency_links to hw3code.egg-info/dependency_links.txt
+[0.660s] writing entry points to hw3code.egg-info/entry_points.txt
+[0.660s] writing requirements to hw3code.egg-info/requires.txt
+[0.660s] writing top-level names to hw3code.egg-info/top_level.txt
+[0.660s] writing manifest file 'hw3code.egg-info/SOURCES.txt'
+[0.660s] reading manifest file 'hw3code.egg-info/SOURCES.txt'
+[0.661s] writing manifest file 'hw3code.egg-info/SOURCES.txt'
+[0.661s] running build_ext
+[0.661s] Creating /home/trey/robotws/install/hw3code/lib/python3.10/site-packages/hw3code.egg-link (link to .)
+[0.662s] Installing hw3p4 script to /home/trey/robotws/install/hw3code/lib/hw3code
+[0.662s] Installing hw3p6 script to /home/trey/robotws/install/hw3code/lib/hw3code
+[0.662s] 
+[0.662s] Installed /home/trey/robotws/build/hw3code
+[0.662s] running symlink_data
+[0.662s] creating /home/trey/robotws/install/hw3code/share/ament_index
+[0.662s] creating /home/trey/robotws/install/hw3code/share/ament_index/resource_index
+[0.663s] creating /home/trey/robotws/install/hw3code/share/ament_index/resource_index/packages
+[0.663s] symbolically linking /home/trey/robotws/build/hw3code/resource/hw3code -> /home/trey/robotws/install/hw3code/share/ament_index/resource_index/packages
+[0.663s] symbolically linking /home/trey/robotws/build/hw3code/package.xml -> /home/trey/robotws/install/hw3code/share/hw3code
+[0.663s] creating /home/trey/robotws/install/hw3code/share/hw3code/rviz
+[0.663s] symbolically linking /home/trey/robotws/build/hw3code/rviz/viewurdf.rviz -> /home/trey/robotws/install/hw3code/share/hw3code/rviz
+[0.663s] symbolically linking /home/trey/robotws/build/hw3code/rviz/viewatlas.rviz -> /home/trey/robotws/install/hw3code/share/hw3code/rviz
+[0.663s] creating /home/trey/robotws/install/hw3code/share/hw3code/urdf
+[0.663s] symbolically linking /home/trey/robotws/build/hw3code/urdf/pantilt.urdf -> /home/trey/robotws/install/hw3code/share/hw3code/urdf
+[0.663s] symbolically linking /home/trey/robotws/build/hw3code/urdf/fourDOFskeleton.urdf -> /home/trey/robotws/install/hw3code/share/hw3code/urdf
+[0.663s] symbolically linking /home/trey/robotws/build/hw3code/urdf/testrobot.urdf -> /home/trey/robotws/install/hw3code/share/hw3code/urdf
+[0.674s] Invoked command in '/home/trey/robotws/build/hw3code' returned '0': PYTHONPATH=/home/trey/robotws/build/hw3code/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/trey/robotws/install/hw3code/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/trey/robotws/build/hw3code/build --no-deps symlink_data
