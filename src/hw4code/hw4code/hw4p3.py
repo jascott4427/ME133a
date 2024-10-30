@@ -34,11 +34,20 @@ def plot_and_max(title, coeffs, t0, t1):
     t_values = np.linspace(t0, t1, 100)
 
     def p(t, coeffs):
-        a, b, c, d = coeffs
-        return a + b * t + c * t**2 + d * t**3
+        if len(coeffs) == 4:
+            a, b, c, d = coeffs
+            e, f = [0, 0]
+        elif len(coeffs) == 6:
+            a, b, c, d, e, f = coeffs
+        return a + b * t + c * t**2 + d * t**3 + e * t**4 + f * t**5
+    
     def v(t, coeffs):
-        a, b, c, d = coeffs
-        return b + 2 * c * t + 3 * d * t**2
+        if len(coeffs) == 4:
+            a, b, c, d = coeffs
+            e, f = [0, 0]
+        elif len(coeffs) == 6:
+            a, b, c, d, e, f = coeffs
+        return b + 2 * c * t + 3 * d * t**2 + e * 4 * t**3 + f * 5 * t**4
     
     positions = [p(t, coeffs) for t in t_values]
     velocities = [v(t, coeffs) for t in t_values]
