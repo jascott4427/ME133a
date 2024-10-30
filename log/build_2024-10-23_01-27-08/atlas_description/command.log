@@ -1,0 +1,4 @@
+Invoking command in '/home/trey/robotws/build/atlas_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/trey/robotws/install/hw3code:/opt/ros/humble /usr/bin/cmake --build /home/trey/robotws/build/atlas_description -- -j32 -l32
+Invoked command in '/home/trey/robotws/build/atlas_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/trey/robotws/install/hw3code:/opt/ros/humble /usr/bin/cmake --build /home/trey/robotws/build/atlas_description -- -j32 -l32
+Invoking command in '/home/trey/robotws/build/atlas_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/trey/robotws/install/hw3code:/opt/ros/humble /usr/bin/cmake --install /home/trey/robotws/build/atlas_description
+Invoked command in '/home/trey/robotws/build/atlas_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/trey/robotws/install/hw3code:/opt/ros/humble /usr/bin/cmake --install /home/trey/robotws/build/atlas_description

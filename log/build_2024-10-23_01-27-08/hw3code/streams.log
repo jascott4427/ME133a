@@ -1,0 +1,21 @@
+[0.417s] Invoking command in '/home/trey/robotws/build/hw3code': PYTHONPATH=/home/trey/robotws/build/hw3code/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/trey/robotws/install/hw3code/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/trey/robotws/build/hw3code/build --no-deps symlink_data
+[0.541s] running develop
+[0.543s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[0.543s]   warnings.warn(
+[0.626s] running egg_info
+[0.626s] writing hw3code.egg-info/PKG-INFO
+[0.626s] writing dependency_links to hw3code.egg-info/dependency_links.txt
+[0.626s] writing entry points to hw3code.egg-info/entry_points.txt
+[0.626s] writing requirements to hw3code.egg-info/requires.txt
+[0.626s] writing top-level names to hw3code.egg-info/top_level.txt
+[0.627s] reading manifest file 'hw3code.egg-info/SOURCES.txt'
+[0.628s] writing manifest file 'hw3code.egg-info/SOURCES.txt'
+[0.629s] running build_ext
+[0.629s] Creating /home/trey/robotws/install/hw3code/lib/python3.10/site-packages/hw3code.egg-link (link to .)
+[0.629s] Installing hw3p4 script to /home/trey/robotws/install/hw3code/lib/hw3code
+[0.629s] Installing hw3p6 script to /home/trey/robotws/install/hw3code/lib/hw3code
+[0.629s] 
+[0.630s] Installed /home/trey/robotws/build/hw3code
+[0.630s] running symlink_data
+[0.630s] symbolically linking /home/trey/robotws/build/hw3code/urdf/fourDOF.urdf -> /home/trey/robotws/install/hw3code/share/hw3code/urdf
+[0.642s] Invoked command in '/home/trey/robotws/build/hw3code' returned '0': PYTHONPATH=/home/trey/robotws/build/hw3code/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/trey/robotws/install/hw3code/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/trey/robotws/build/hw3code/build --no-deps symlink_data

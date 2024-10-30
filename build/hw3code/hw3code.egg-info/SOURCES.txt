@@ -14,6 +14,7 @@ hw3code.egg-info/zip-safe
 resource/hw3code
 rviz/viewatlas.rviz
 rviz/viewurdf.rviz
+urdf/fourDOF.urdf
 urdf/fourDOFskeleton.urdf
 urdf/pantilt.urdf
 urdf/testrobot.urdf
