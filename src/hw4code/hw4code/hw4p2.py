@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Grab the fkin and Jac from P1.
-from hw4code.hw4p1 import fkin, Jac
+from hw4p1 import fkin, Jac
 
 
 #
@@ -25,7 +25,7 @@ def elbow_up(q):
     return np.sin(q[2]) < 0.0
 
 def front_side(q):
-    return l1 * np.cos(q[1]) + l2 * np.cos(q[1] + q[2]) > 0.0
+    return np.cos(q[1]) + np.cos(q[1] + q[2]) > 0.0
 
 
 
@@ -42,9 +42,29 @@ def newton_raphson(xgoal):
 
     # Number of steps to try.
     N = 100
-
+    convergence = False
+    steps_required = 0
+    tol = 1e-12
+    final_q = np.array([0, 0, 0])
+    complete = False
     # IMPLEMENT THE NEWTON-RAPHSON ALGORITHM!
-    ....
+    for i in range(N):
+        x = fkin(q)
+        error = xgoal - x
+        dist2goal = np.linalg.norm(error)
+        if dist2goal < tol and not complete:
+            convergence = True
+            steps_required = i+1
+            complete = True
+        xdistance.append(dist2goal)
+        J = Jac(q)
+        J_inv = np.linalg.pinv(J)  
+        delta_q = J_inv @ error
+        qstepsize.append(np.linalg.norm(delta_q))
+        q = q + delta_q
+        if i == N-1:
+            final_q = q
+    
 
     # Create a plot of x distances to goal and q step sizes, for N steps.
     N = 20
@@ -73,6 +93,21 @@ def newton_raphson(xgoal):
 
     plt.show()
 
+    elbow_dir = ''
+    if elbow_up(q):
+        elbow_dir = 'elbow up'
+    else:
+        elbow_dir = 'elbow down'
+
+    side = ''
+    if front_side(q):
+        side = 'front'
+    else:
+        side = 'back'
+
+    num_wraps = wraps(final_q)
+
+    return convergence, steps_required, final_q, elbow_dir, side, num_wraps
 
 #
 #  Main Code
@@ -80,7 +115,7 @@ def newton_raphson(xgoal):
 def main():
     # Run the test case.  Suppress infinitesimal numbers.
     np.set_printoptions(suppress=True)
-
+    print(f"{'Xgoal':<20} {'Convergence':<10} {'Steps Required':<10} {'Final Q':<35} {'Elbow Dir':<10} {'Side':<10} {'# Wraps':<15}")
     # Prcess each target (goal position).
     for xgoal in [np.array([0.5,  1.0, 0.5]), 
                   np.array([1.0,  0.5, 0.5]),
@@ -89,7 +124,12 @@ def main():
                   np.array([0.0, -0.6, 0.5]),
                   np.array([0.5, -1.0, 0.5]),
                   np.array([-1.0, 0.0, 0.5])]:
-        newton_raphson(xgoal)
+        convergence, steps_required, final_q, elbow_dir, side, wraps = newton_raphson(xgoal)
+        if convergence == False:
+            steps = 'N/A'
+        else:
+            steps = str(steps_required)
+        print(f"{str(xgoal):<20} {str(convergence):<10} {steps:<10} {str(final_q):<35} {elbow_dir:<10} {side:<10} {str(wraps):<15}")
 
 if __name__ == "__main__":
     main()
